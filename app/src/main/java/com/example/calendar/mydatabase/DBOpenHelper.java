@@ -57,7 +57,10 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     //    ----------- get all the events for the selected day,month,year from database using cursor ----------
     public Cursor readEvents(String date, String month, String year, SQLiteDatabase sqLiteDatabase) {
         String[] columns = {DatabaseKeys.EVENT_TITLE, DatabaseKeys.EVENT_DETAILS, DatabaseKeys.TIME, DatabaseKeys.DATE, DatabaseKeys.MONTH, DatabaseKeys.YEAR};
-        String selection = DatabaseKeys.DATE + "=? and " + DatabaseKeys.MONTH + "=? and " + DatabaseKeys.YEAR + "=?";
+        String selection = 
+            DatabaseKeys.DATE + "=? and " 
+            + DatabaseKeys.MONTH + "=? and " 
+            + DatabaseKeys.YEAR + "=?";
         String[] selectionArgs = {date, month, year};
         return sqLiteDatabase.query(DatabaseKeys.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
     }
@@ -68,7 +71,8 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 DatabaseKeys.EVENT_TITLE + "=? and "
                         + DatabaseKeys.EVENT_DETAILS + "=? and "
                         + DatabaseKeys.TIME + "=? and "
-                        + DatabaseKeys.DATE + "=? and " + DatabaseKeys.MONTH + "=? and "
+                        + DatabaseKeys.DATE + "=? and " 
+                        + DatabaseKeys.MONTH + "=? and "
                         + DatabaseKeys.YEAR + "=?";
         String[] selectionArgs = {eventTitle, eventDetails, time, date, month, year};
         sqLiteDatabase.delete(DatabaseKeys.TABLE_NAME, selection, selectionArgs);
